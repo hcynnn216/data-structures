@@ -11,7 +11,7 @@ var Stack = function() {
   };
 
   someInstance.pop = function() {
-    size--;
+    size = Math.max(size - 1, 0);
   };
 
   someInstance.size = function() {
