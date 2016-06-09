@@ -1,8 +1,25 @@
 var Queue = function() {
-  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  // but try not not reference your old code in writing the new style.
+  var queue = {};
+  queue.start = 0;
+  queue.end = 0;
+  queue.storage = {};
+  _.extend(queue, queueMethods);
+  return queue;
 };
 
 var queueMethods = {};
 
+queueMethods.enqueue = function(value) {
+  this.end++;
+};
+
+queueMethods.dequeue = function() {
+  
+  this.start = Math.min(this.start + 1, this.end);
+
+};
+
+queueMethods.size = function() {
+  return this.end - this.start;
+};
 
