@@ -9,14 +9,18 @@ var LinkedList = function() {
       list.head = node;
       list.tail = node;
     } else {
+      node.previous = list.tail;
       list.tail.next = node;
-      list.tail = node;
+      list.tail = list.tail.next;
     }
   };
 
   list.removeHead = function() {
     var node = list.head;
     list.head = list.head.next;
+    if (list.head !== null) {
+      list.head.previous = null;
+    }
     return node.value;
   };
 
@@ -36,6 +40,7 @@ var Node = function(value) {
 
   node.value = value;
   node.next = null;
+  node.previous = null;
 
   return node;
 };
